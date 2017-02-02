@@ -1,0 +1,31 @@
+{
+  "name": "jsocha/logs-viewer",
+  "description": "Simple logs viewer for Laravel",
+  "license": "MIT",
+  "type": "library",
+  "homepage": "http://quatrodesign.pl",
+  "minimum-stability": "dev",
+  "version": "1.0",
+  "authors": [
+    {
+      "name": "Jakub Socha",
+      "email": "kontakt@quatrodesign.pl"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Jsocha\\LogsViewer\\": "src/"
+    }
+  },
+  "require": {
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php artisan vendor:publish"
+    ],
+    "post-update-cmd": [
+      "php artisan vendor:publish"
+    ]
+  },
+}
+
