@@ -26,6 +26,6 @@
     "post-update-cmd": [
       "php artisan vendor:publish"
     ]
-  },
+  }
 }
 
