@@ -82,7 +82,7 @@
                         <h3>
                             <a href="{{route($route, ['file' => base64_encode($logName), 'action' => 'delete'])}}"> <span class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></span></a>
                             File: {{$logName}}
-                            <small>({{count($detailedLog)}} logs)</small>
+                            <small>(Total: {{array_sum($hashes)}}, Unical: {{count($detailedLog)}})</small>
                         </h3>
                         <table class="table table-striped table-bordered">
                             <thead>
@@ -91,7 +91,8 @@
                             <tbody>
                             @foreach($detailedLog as $key => $log)
                                 <tr>
-                                    <td width="175"><b>{{$log['date']}}</b> <br/>
+                                    <td width="50" class="text-center"><span class="btn btn-warning btn-xs">{{$hashes[$log{'hash'}]}}x</span></td>
+                                    <td width="175"><b>{{Carbon\Carbon::parse($log['date'])->toTimeString()}}</b> <br/>
                                         <small>{{\Carbon\Carbon::parse($log['date'])->diffForHumans()}}</small>
                                     </td>
                                     <td width="50" class="text-center">{!! $log['icon'] !!}</td>

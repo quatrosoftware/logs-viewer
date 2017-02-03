@@ -90,10 +90,18 @@
                 
             }
             
-            $collection = collect($detailedLog)->keyBy('hash');
+            $hashes = [];
             
-            $detailedLog = $collection->toArray();
-            
+            foreach ($detailedLog as $log) {
+                if (isset($hashes[$log['hash']])) {
+                    $hashes[$log['hash']]++;
+                }
+                else {
+                    $hashes[$log['hash']] = 1;
+                    
+                }
+            }
+            $detailedLog = collect($detailedLog)->keyBy('hash')->toArray();
             
             
             /**
@@ -115,6 +123,7 @@
             return app('view')->make('logs-viewer::index', ['logs'        => $logs,
                                                             'detailedLog' => array_reverse($detailedLog),
                                                             'logName'     => $logName,
+                                                            'hashes'      => $hashes,
                                                             'route'       => $this->route]);
         }
         
