@@ -1,4 +1,5 @@
 <?php
+    
     namespace Jsocha\LogsViewer;
     
     
@@ -12,7 +13,7 @@
         {
             $this->loadViewsFrom(__DIR__ . '/views', 'logs-viewer');
             
-            $this->publishes([__DIR__ . '/public' => public_path('vendor/logs-viewer'),], 'public');
+            $this->loadRoutesFrom(__DIR__ . '/routes.php');
         }
         
     }
